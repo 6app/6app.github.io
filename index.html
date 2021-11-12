@@ -1,29 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-    <meta charset="UTF-8">
-    <title>登录页面</title>
- 
-    <link rel="stylesheet" type="text/css" href="login.css"/>
-    <script type="text/javascript" src="login.js"></script>
+<title>3</title>
+<script>
+function r()
+{
+
+var username=document.getElementById("username");
+
+var pass=document.getElementById("password");
+if(username.value=="damao")
+{
+alert("请输入用户名");
+username.focus();
+return;
+}
+if(pass.value=="123456")
+{
+alert("请输入密码");
+return;
+}
+return true;
+}
+</script>
 </head>
- 
 <body>
-<div id="login_frame">
- 
-    <p id="image_logo"><img src="images/login/fly.png"></p>
- 
-    <form method="post" action="login.js">
- 
-        <p><label class="label_input">用户名</label><input type="text" id="username" class="text_field"/></p>
-        <p><label class="label_input">密码</label><input type="text" id="password" class="text_field"/></p>
- 
-        <div id="login_control">
-            <input type="button" id="btn_login" value="登录" οnclick="login();"/>
-            <a id="forget_pwd" href="forget_pwd.html">忘记密码？</a>
-        </div>
-    </form>
-</div>
- 
+<form>
+<table width="350" bgcolor="#ccffcc" style="border-color" border="1">
+<tr align=center>
+<td>用户名</td><td><input type="text" name="username" id="username"></td>
+</tr>
+<tr align=center><td>密 码</td><td><input type="password" name="password" id="password"></td></tr>
+<tr align=center><td>验证码</td><td><input type="text" name="yanzheng"></td></tr>
+<tr align=center><td colspan="2"><input type="button" value="登 录" onclick="r();"/>     <input type="reset" value="重 置"/></td></tr>
+
+</table>
+</form>
 </body>
 </html>
