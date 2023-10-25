@@ -121,26 +121,26 @@ a:hover {
 /* 各区块 */
 
 .Box1 {
-    background: url(../image/bg1.png) no-repeat center center;
+    background: url("https://pic.imgdb.cn/item/6538616ec458853aefb8abf9.jpg") no-repeat center center;
 }
 
 .Box2 {
-    background: url(../image/bg2.png) no-repeat center center;
+    background: url("https://pic.imgdb.cn/item/6538616ec458853aefb8abc0.png") no-repeat center center;
     margin-top: -400px;
 }
 
 .Box3 {
-    background: url(../image/bg3.png) no-repeat center center;
+    background: url("https://pic.imgdb.cn/item/6538616dc458853aefb8ab2e.jpg") no-repeat center center;
     margin-top: -10px;
 }
 
 .Box4 {
-    background: url(../image/bg4.png) no-repeat center center;
+    background: url("https://pic.imgdb.cn/item/6538616dc458853aefb8aac7.jpg") no-repeat center center;
     margin-top: -10px;
 }
 
 .Box5 {
-    background: url(../image/bg5.png) no-repeat center center;
+    background: url("https://pic.imgdb.cn/item/6538616dc458853aefb8aa91.jpg") no-repeat center center;
 }
 
 .nutscraftBox {
@@ -316,7 +316,7 @@ a:hover {
     display: inline-block;
     width: 60px;
     height: 60px;
-    background: url(../image/g.jpg) no-repeat;
+    background: url("https://pic.imgdb.cn/item/6538616dc458853aefb8a9f8.jpg") no-repeat;
     background-size: 100% 100%;
     border-radius: 50%;
     margin-right: 30px;
@@ -466,7 +466,7 @@ a:hover {
     display: inline-block;
     width: 40px;
     height: 40px;
-    background-image: url(../image/bread.png);
+    background-image: url("https://pic.imgdb.cn/item/6538616dc458853aefb8aa45.png");
     background-size: 100% 100%;
     vertical-align: middle;
     margin-right: 10px;
